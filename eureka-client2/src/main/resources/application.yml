@@ -1,0 +1,18 @@
+server:
+  port: 8081
+
+# IDENTITY
+spring:
+  application:
+    name: client2
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/,http://peer3:8763/eureka/
+      # defaultZone: http://user:password@localhost:8761/eureka  # 身份验证
+    instance:
+      statusPageUrlPath: ${management.context-path}/info
+      healthCheckUrlPath: ${management.context-path}/health
+    healthcheck:
+      enabled: true  # 是否发送健康状态到server
